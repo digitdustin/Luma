@@ -11,6 +11,8 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    titleBarStyle: 'hidden',
+    resizable: false,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true
@@ -20,7 +22,7 @@ const createWindow = () => {
   global.mainWindow = mainWindow;
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, 'start.html'));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();

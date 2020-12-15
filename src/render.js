@@ -1,3 +1,5 @@
+//LOGIC FOR OPENING RENDER
+
 const { remote, app, BrowserWindow, ipcMain, ipcRenderer } = require('electron');
 const path = require('path');
 const { noDeprecation } = require('process');
@@ -33,11 +35,14 @@ const createResizeWindow = () => {
 //event listeners
 captureButton.addEventListener('click', createResizeWindow, false);
 
+//https://stackoverflow.com/questions/43486438/electron-ipc-sending-data-between-windows/43486549
 //listen for selection of screen area
 ipcRenderer.on("add-selection-area", (e, data, web_component_id) => {
     console.log("msg receieved:");
     console.log(data);
 });
+
+
 
 
 
