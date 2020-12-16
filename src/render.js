@@ -42,6 +42,7 @@ ipcRenderer.on("add-selection-area", (e, data, web_component_id) => {
     console.log(data);
 });
 
+//FADER
 
 
 

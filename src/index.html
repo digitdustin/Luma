@@ -12,6 +12,16 @@
     <script defer src="render.js" type="module"></script>
   </head>
   <body>
+    <svg id="fader"></svg>
+        <script>
+            function fadeInPage() {
+              if (!window.AnimationEvent) { return; }
+              var fader = document.getElementById('fader');
+              fader.classList.add('fade-out');
+            }
+            
+            fadeInPage();
+        </script>
     <h1>💖 Luma</h1>
     <p>Welcome to your Electron application.</p>
     <button id="capture-btn" class="uk-button uk-button-primary">Capture Screen</button>

@@ -1,4 +1,6 @@
 const { remote } = require('electron');
+const path = require('path');
+const { brotliDecompressSync } = require('zlib');
 
 //luma logo animation
 
@@ -34,3 +36,39 @@ minimizeBtn.addEventListener('click', () => {
     var w = remote.getCurrentWindow();
     w.minimize(); 
 })
+
+//---------------------
+//For ease and consistent background staging, the initial light discovery is a part of the start screen (embedded) 
+//as opposed to loaded in a different html file.
+
+const startBtn = document.getElementById('start-btn');
+/*
+startBtn.addEventListener('click', () => {
+    var w = remote.getCurrentWindow();
+    w.loadFile(path.join(__dirname, 'index.html'));
+})*/
+
+startBtn.addEventListener('click', transitionToPage);
+
+//FADER
+function transitionToPage() {
+    document.getElementById('container').style.opacity = 0;
+    setTimeout(function() { 
+        //load new elements to discover lights
+        document.getElementById('container').remove();
+        //spawns new discover page
+        createDiscoverPage();
+        //var w = remote.getCurrentWindow();
+        //w.loadFile(path.join(__dirname, 'index.html'));
+    }, 1000)
+}
+
+function createDiscoverPage() {
+    var div = document.createElement("div");
+    div.id = "light-container";
+    div.innerHTML = 'hello!'
+    document.getElementById('body').appendChild(div);
+    setTimeout(function() { 
+    document.getElementById('light-container').style.opacity = 1;
+    }, 200)
+}

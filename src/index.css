@@ -1,6 +1,111 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   margin: auto;
-  max-width: 38rem;
   padding: 2rem;
+	background: linear-gradient(-45deg, #11171a, #1b2427, #161a1d, #191e20);
+	background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  width: 100vw;
+  height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@-webkit-keyframes text-flicker-in-glow {
+    0% {
+        opacity:0
+    }
+    10% {
+        opacity:0;
+        text-shadow:none
+    }
+    10.1% {
+        opacity:1;
+        text-shadow:none
+    }
+    10.2% {
+        opacity:0;
+        text-shadow:none
+    }
+    20% {
+        opacity:0;
+        text-shadow:none
+    }
+    20.1% {
+        opacity:1;
+        text-shadow:0 0 000px rgba(255,255,255,.25)
+    } 
+    20.6% {
+        opacity:0;
+        text-shadow:none
+    } 
+    30% {
+        opacity:0;
+        text-shadow:none
+    } 
+    30.1% {
+        opacity:1;
+        text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)
+    }
+    30.5% {
+        opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)
+    } 
+    30.6% {
+        opacity:0;text-shadow:none
+    } 
+    45% {
+        opacity:0;text-shadow:none
+    }
+    45.1% {
+        opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)
+    }
+    50% {
+        opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)
+    } 
+    55% {
+        opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}55.1%{opacity:0;text-shadow:none}57%{opacity:0;text-shadow:none}57.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35)}60%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35)}60.1%{opacity:0;text-shadow:none}65%{opacity:0;text-shadow:none}65.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75.1%{opacity:0;text-shadow:none}77%{opacity:0;text-shadow:none}77.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.4),0 0 1000px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.4),0 0 1000px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85.1%{opacity:0;text-shadow:none}86%{opacity:0;text-shadow:none}86.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.45),0 0 1000px rgba(255,255,255,.25),0 0 100px rgba(255,255,255,.1)}100%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.45),0 0 1000px rgba(255,255,255,.25),0 0 100px rgba(255,255,255,.1)}}@keyframes text-flicker-in-glow{0%{opacity:0}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:none}10.2%{opacity:0;text-shadow:none}20%{opacity:0;text-shadow:none}20.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.25)}20.6%{opacity:0;text-shadow:none}30%{opacity:0;text-shadow:none}30.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}30.5%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}30.6%{opacity:0;text-shadow:none}45%{opacity:0;text-shadow:none}45.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}50%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}55%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}55.1%{opacity:0;text-shadow:none}57%{opacity:0;text-shadow:none}57.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35)}60%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35)}60.1%{opacity:0;text-shadow:none}65%{opacity:0;text-shadow:none}65.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75.1%{opacity:0;text-shadow:none}77%{opacity:0;text-shadow:none}77.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.4),0 0 1000px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.4),0 0 1000px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85.1%{opacity:0;text-shadow:none}86%{opacity:0;text-shadow:none}86.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.45),0 0 1000px rgba(255,255,255,.25),0 0 100px rgba(255,255,255,.1)}100%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.45),0 0 1000px rgba(255,255,255,.25),0 0 100px rgba(255,255,255,.1)}}
+
+/*---FADER---*/
+
+#fader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  pointer-events: none;
+  background: white;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-out {
+  from { opacity: 1 }
+    to { opacity: 0 }
+}
+
+@keyframes fade-in {
+  from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+#fader.fade-out {
+  opacity: 0;
+  animation-name: fade-out;
+}
+
+#fader.fade-in {
+  opacity: 1;
+  animation-name: fade-in;
 }
