@@ -13,6 +13,7 @@ const createWindow = () => {
     height: 600,
     titleBarStyle: 'hidden',
     resizable: false,
+    hasShadow: false,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true
@@ -25,7 +26,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'start.html'));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
