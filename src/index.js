@@ -20,6 +20,11 @@ const createWindow = () => {
     }
   });
 
+  let webContents = mainWindow.webContents
+  webContents.on('did-finish-load', () => {
+  webContents.setZoomFactor(1)
+})
+
   global.mainWindow = mainWindow;
 
   // and load the index.html of the app.
