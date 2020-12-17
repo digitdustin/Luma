@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap');
 
 *{
     margin: 0;  
@@ -7,7 +8,8 @@
 }
 
 body {
-    background: linear-gradient(-45deg, #11171a, #1b2427, #161a1d, #191e20);
+    background: linear-gradient(-45deg, #263136, #11171a, #18161d, #382635);
+/*    background: linear-gradient(-45deg, #11171a, #1b2427, #161a1d, #191e20);*/
 	background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     width: 100vw;
@@ -77,7 +79,7 @@ body {
     50% {
         opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)
     } 
-    55% {
+    55% { /* ......... neverending */
         opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}55.1%{opacity:0;text-shadow:none}57%{opacity:0;text-shadow:none}57.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35)}60%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35)}60.1%{opacity:0;text-shadow:none}65%{opacity:0;text-shadow:none}65.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75.1%{opacity:0;text-shadow:none}77%{opacity:0;text-shadow:none}77.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.4),0 0 1000px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.4),0 0 1000px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85.1%{opacity:0;text-shadow:none}86%{opacity:0;text-shadow:none}86.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.45),0 0 1000px rgba(255,255,255,.25),0 0 100px rgba(255,255,255,.1)}100%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.45),0 0 1000px rgba(255,255,255,.25),0 0 100px rgba(255,255,255,.1)}}@keyframes text-flicker-in-glow{0%{opacity:0}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:none}10.2%{opacity:0;text-shadow:none}20%{opacity:0;text-shadow:none}20.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.25)}20.6%{opacity:0;text-shadow:none}30%{opacity:0;text-shadow:none}30.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}30.5%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}30.6%{opacity:0;text-shadow:none}45%{opacity:0;text-shadow:none}45.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}50%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}55%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.45),0 0 60px rgba(255,255,255,.25)}55.1%{opacity:0;text-shadow:none}57%{opacity:0;text-shadow:none}57.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35)}60%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35)}60.1%{opacity:0;text-shadow:none}65%{opacity:0;text-shadow:none}65.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75.1%{opacity:0;text-shadow:none}77%{opacity:0;text-shadow:none}77.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.4),0 0 1000px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.4),0 0 1000px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85.1%{opacity:0;text-shadow:none}86%{opacity:0;text-shadow:none}86.1%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.45),0 0 1000px rgba(255,255,255,.25),0 0 100px rgba(255,255,255,.1)}100%{opacity:1;text-shadow:0 0 000px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.45),0 0 1000px rgba(255,255,255,.25),0 0 100px rgba(255,255,255,.1)}}
 
 #logo {
@@ -88,7 +90,7 @@ body {
     font-weight: 400;
     font-size: 128px;
     text-align: center;
-    padding-bottom: 60px;
+    padding-bottom: 20px;
     cursor: url('https://www.flaticon.com/svg/static/icons/svg/29/29964.svg'), auto;	
 }
 
@@ -137,6 +139,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-right: 8px;
+    z-index: 9;
 }
 
 #minimize {
@@ -147,6 +150,7 @@ body {
     justify-content: center;
     margin-left: auto;
     margin-right: 8px;
+    z-index: 9;
 }
 
 .fa-window-minimize {
@@ -171,7 +175,55 @@ body {
     transition: opacity 1s;
 }
 
-#light-container {
-    opacity: 0;
+#container2 {
     transition: opacity 1s;
+}
+
+#discover-message {
+    transition: opacity 1s;
+    font-size: 30px;
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    width: 70%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loader {
+    transition: opacity 1s;
+    position: absolute;
+    bottom: -20px;
+    left: 0px;
+}
+
+.light-container {
+    display: flex;
+    width: 20vw;
+    height: 30px;
+    min-width: 50px;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #d3d3d35e;
+    margin-top: 10px;
+    padding-top: 5px;
+    
+}
+
+.light-color {
+    border-radius: 50%;
+    border: 1px solid white;
+    width:20px;
+    height: 20px;
+    stroke: white;
+}
+
+.light-name {
+    font-size: 20px;
+    color: #c0c0c0;
+    font-family: 'Manrope', sans-serif;
+    text-align: left;
+    padding-left: 10px;
+    stroke: white;
 }
