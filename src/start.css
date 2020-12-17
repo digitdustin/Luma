@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 
 *{
     margin: 0;  
@@ -177,13 +179,21 @@ body {
 
 #container2 {
     transition: opacity 1s;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: -300px;
+    top: -65px;
+    width: 1200px;
 }
 
 #discover-message {
     transition: opacity 1s;
     font-size: 30px;
     color: white;
-    font-family: 'Manrope', sans-serif;
+    /*font-family: 'Manrope', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
     width: 70%;
     text-align: center;
     display: flex;
@@ -196,6 +206,14 @@ body {
     position: absolute;
     bottom: -20px;
     left: 0px;
+
+    visibility: hidden;
+}
+
+#loader2 {
+    transition: opacity 1s;
+    position: absolute;
+    top: -60px;
 }
 
 .light-container {
@@ -205,10 +223,13 @@ body {
     min-width: 50px;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid #d3d3d35e;
+    border: 1px solid #d3d3d35e;
     margin-top: 10px;
     padding-top: 5px;
-    
+    padding-bottom: 5px;
+    cursor: pointer;
+    z-index: 9;
+    background-color: #11171a;
 }
 
 .light-color {
@@ -222,7 +243,8 @@ body {
 .light-name {
     font-size: 20px;
     color: #c0c0c0;
-    font-family: 'Manrope', sans-serif;
+    /*font-family: 'Manrope', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
     text-align: left;
     padding-left: 10px;
     stroke: white;
