@@ -1,6 +1,7 @@
 //import discover from './scripts/discover.js';
 const lottie = require('lottie-web')
 const { remote, app, BrowserWindow, ipcMain, ipcRenderer } = require('electron');
+const path = require('path');
 
   
 
@@ -24,9 +25,7 @@ function transitionToPage() {
         buildDiscoverPage();
         //var w = remote.getCurrentWindow();
         //w.loadFile(path.join(__dirname, 'index.html'));
-        /* var w = remote.getCurrentWindow();
-        w.setSize(800, 500, true);
-        w.center(); */
+        
     }, 1000)
 }
 
@@ -128,7 +127,7 @@ function buildDiscoverPage() {
             })
 
             
-        }, 800)
+        }, 1000)
             setTimeout(function() { 
                 //continue button
                 var continueBtn = document.createElement("button");
@@ -141,14 +140,21 @@ function buildDiscoverPage() {
                 continueBtn.style.color = "white"
                 continueBtn.style.zIndex = "99";
 
-                continueBtn.addEventListener('click', () => {
-                    console.log('next page');
-                })
-
                 document.getElementById('container').appendChild(continueBtn);
+
+                continueBtn.addEventListener('click', () => {
+                    //fade to background color of dashboard and switch to dashboard
+                    document.getElementById('fade').classList.add('elementToFadeOut');
+                    setTimeout( () => {
+                        var w = remote.getCurrentWindow();
+                        w.loadFile(path.join(__dirname, 'dashboard.html'));
+                        console.log('switch to control window');
+                    }, 1000)
+                    
+                })
                 
                 document.getElementById('container').style.opacity = 1;
-            }, 1500)
+            }, 2000)
         } else {
             //if no lights are found:
             console.log("no lights found")

@@ -122,55 +122,9 @@ body {
     opacity:1;
 }
 
-#navbar {
-    height: 30px;
-    top: 0;
-    width: 100vw;
-    position: absolute;
-    display: flex;
-    align-items: flex-end;
-    justify-content: right;
-    -webkit-user-select: none;
-    -webkit-app-region: drag;
-}
 
-#close {
-    height: 100%;
-    width: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 8px;
-    z-index: 9;
-}
 
-#minimize {
-    height: 100%;
-    width: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: 8px;
-    z-index: 9;
-}
 
-.fa-window-minimize {
-    padding-bottom: 5px;
-    font-size: 20px;
-}
-
-.fa-times {
-    font-size: 20px;
-}
-
-#minimize:hover .fa-window-minimize {
-    color: white;
-}
-
-#close:hover .fa-times {
-    color: white;
-}
 
 
 #container { 
@@ -248,4 +202,23 @@ body {
     text-align: left;
     padding-left: 10px;
     stroke: white;
+}
+
+#fade{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 999;
+    background: #11171a;
+    opacity:0;
+    pointer-events: none;
+}
+
+.elementToFadeOut {
+    animation: fadeOut 1s linear forwards;
+}
+
+@keyframes fadeOut {
+ 0% { opacity:0; }
+ 100% { opacity:1; } 
 }
