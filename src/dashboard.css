@@ -1,0 +1,39 @@
+body {
+    background-color: #11171a;
+}
+
+.top-nav {
+    top: 50px;
+}
+
+#holder {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+#light-dashboard {
+    width: 85vw;
+    height: 70vh;
+    margin-top: 50px;
+}
+
+#light-list {
+    width: 28vw;
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+    background-color: #0d1214;
+    border: 1px solid #1a2327;
+    box-shadow: inset 0 0 5px #000000;
+    float: left;
+}
+
+#light-controls {
+    position: relative;
+    height: 100%;
+    width: 56vw;
+    overflow: hidden;
+}

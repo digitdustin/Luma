@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="slider.css">
+    <link rel="stylesheet" href="swatches.css">
+    <script defer src="dashboard.js" type="module"></script>
+    <script defer src="swatches.js"></script>
+    <script defer src="slider.js"></script>
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <link rel="stylesheet" href="navbar.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <script defer src="navbar.js" type="module"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div id="navbar">
+        <div id="minimize" className="navbar-item"><i class="fa fa-fw fa-window-minimize"></i></div>
+        <div id="close" className="navbar-item"><i class="fa fa-fw fa-times"></i></div>
+    </div>
+
+    <div id="holder">
+        <ul uk-tab="animation: uk-animation-fade; duration: 300" class="uk-position-absolute uk-animation-fade top-nav">
+            <li><a href="#">Lights</a></li>
+            <li><a href="#">Zones</a></li>
+            <li><a href="#">Live</a></li>
+        </ul>
+        
+        
+        <ul class="uk-switcher uk-margin">
+            <li class="uk-animation-fade">
+                <div id="light-dashboard">
+                    <div id="light-list"></div>
+                    <div id="light-controls">
+                  
+                            <input type="range" min="0" max="360" value="180" class="slider" id="hue-slider">
+                            <input type="range" min="0" max="100" value="50" class="slider" id="saturation-slider">
+                            <input type="range" min="1" max="100" value="50" class="slider" id="brightness-slider">
+                            <input type="range" min="1500" max="9000" value="5250" class="slider" id="kelvin-slider">
+                            <div id="swatches">
+                                
+
+                            </div>
+                    </div>
+                </div>
+            </li>
+            <li><div id="zones-dashboard">
+                
+            </div></li>
+            <li>Coming soon!</li>
+        </ul>
+    </div>
+</body>
+</html>
