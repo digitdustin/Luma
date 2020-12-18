@@ -1,0 +1,27 @@
+#swatches {
+    position: absolute;
+    left: 240px;
+    width: 200px;
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+    grid-template-areas: 
+        "a a"
+        "a a"
+    ;
+}
+
+.swatch {
+    border-radius: 5px;
+    border: 1px solid #1a2327;
+    cursor: pointer;
+}
+
+#current-swatch {
+    grid-area: a;
+    border-radius: 5px;
+    border: 1px solid #1a2327;
+    background-color: seagreen;
+}
