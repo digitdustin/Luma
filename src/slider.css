@@ -1,0 +1,54 @@
+
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 200px; /* Full-width */
+    height: 8px; /* Specified height */
+    transform: translate(-50%, -50%) rotate(-90deg);
+    top: 100px;
+    position: absolute;
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    border-radius: 5px;
+    border: 1px solid #1a2327;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px;
+    opacity: 1 !important;
+    border-radius: 50%; 
+    border: 1px solid #a8a8a8;
+    background: #ffffff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    box-shadow: -3px 0 5px #0000005d;
+  }
+
+  #hue-slider {
+    left: 50px;
+  }
+  
+  #saturation-slider {
+    left: 100px;
+  }
+
+  #brightness-slider {
+    left: 150px;
+  }
+
+  #kelvin-slider {
+    left: 200px;
+  }
