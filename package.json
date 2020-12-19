@@ -50,6 +50,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "lifx-api": "^1.0.1",
     "lottie-web": "^5.7.5",
+    "node-lifx": "^0.8.0",
     "node-lifx-lan": "^0.5.0",
     "uikit": "^3.6.1"
   },
