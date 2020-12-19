@@ -25,8 +25,8 @@
 
     <div id="holder">
         <ul uk-tab="animation: uk-animation-fade; duration: 300" class="uk-position-absolute uk-animation-fade top-nav">
-            <li><a href="#">Lights</a></li>
-            <li><a href="#">Zones</a></li>
+            <li id="dashboard-button"><a href="#">Lights</a></li>
+            <li id="zones-button"><a href="#">Zones</a></li>
             <li><a href="#">Live</a></li>
         </ul>
         
@@ -39,7 +39,7 @@
                   
                             <input type="range" min="0" max="360" value="180" class="slider" id="hue-slider">
                             <input type="range" min="0" max="100" value="50" class="slider" id="saturation-slider">
-                            <input type="range" min="1" max="100" value="50" class="slider" id="brightness-slider">
+                            <input type="range" min="0" max="100" value="50" class="slider" id="brightness-slider">
                             <input type="range" min="1500" max="9000" value="5250" class="slider" id="kelvin-slider">
                             <div id="swatches">
                                 

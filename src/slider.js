@@ -1,3 +1,5 @@
+const { session } = require("electron");
+
 var hueSlider = document.getElementById('hue-slider');
 var saturationSlider = document.getElementById('saturation-slider');
 var brightnessSlider = document.getElementById('brightness-slider');
@@ -19,6 +21,7 @@ hueSlider.oninput = () => {
     console.log(hueSlider.value)
 
     document.getElementById('current-swatch').style.backgroundColor = `hsl(${hueSlider.value}, ${saturationSlider.value}%, ${brightnessSlider.value}%)`;
+
 }
 
 saturationSlider.oninput = () => {

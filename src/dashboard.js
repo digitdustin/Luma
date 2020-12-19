@@ -5,14 +5,71 @@ var client = new LifxClient();
 
 //initialize light discovery client
 client.init();
+console.log('client destroyed');
+
+const zonesBtn = document.getElementById('zones-button');
+const dashboardBtn = document.getElementById('dashboard-button');
+zonesBtn.addEventListener('click', () => {
+    client.stopDiscovery();
+    client.stopSendingProcess();
+    console.log('dashboard client paused');
+})
+
+dashboardBtn.addEventListener('click', () => {
+    console.log('hello')
+    client.startDiscovery();
+    client.startSendingProcess();
+    console.log('dashboard client resumed');
+})
 
 const lightContainer = document.getElementById('light-list');
-var hueSlider = document.getElementById('hue-slider');
-var saturationSlider = document.getElementById('saturation-slider');
-var brightnessSlider = document.getElementById('brightness-slider');
-var kelvinSlider = document.getElementById('kelvin-slider');
+const hueSlider = document.getElementById('hue-slider');
+const saturationSlider = document.getElementById('saturation-slider');
+const brightnessSlider = document.getElementById('brightness-slider');
+const kelvinSlider = document.getElementById('kelvin-slider');
+
+var activeLight = 0;
+var wait = true;
+
+function changeWait() {
+    setTimeout(() => {
+        wait = true
+    }, 50);
+}
+
+//change lights when sliders change
+hueSlider.addEventListener('input', (e) => {
+    if (wait == true) {
+        if (activeLight != 0) {
+            activeLight.color(Number(hueSlider.value), Number(saturationSlider.value), Number(brightnessSlider.value)); // Set to red at 50% brightness
+        }
+        wait = false;
+        changeWait();
+    }
+})
+
+saturationSlider.addEventListener('input', (e) => {
+    if (wait == true) {
+        if (activeLight != 0) {
+            activeLight.color(Number(hueSlider.value), Number(saturationSlider.value), Number(brightnessSlider.value)); // Set to red at 50% brightness
+        }
+        wait = false;
+        changeWait();
+    }
+})
+
+brightnessSlider.addEventListener('input', (e) => {
+    if (wait == true) {
+        if (activeLight != 0) {
+            activeLight.color(Number(hueSlider.value), Number(saturationSlider.value), Number(brightnessSlider.value)); // Set to red at 50% brightness
+        }
+        wait = false;
+        changeWait();
+    }
+})
 
 client.on('light-new', (light) => {
+    light.on();
     light.getLabel(function(error, data) {
         if (error) {
             throw error;
@@ -67,6 +124,10 @@ function changeControls(light) {
         document.getElementById('current-swatch').value = data['color']['brightness'];
         
     })
+
+
+    activeLight = light;
+    console.log(activeLight);
 
 }
 
