@@ -4,10 +4,10 @@
   .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    width: 200px; /* Full-width */
+    width: 250px; /* Full-width */
     height: 8px; /* Specified height */
     transform: translate(-50%, -50%) rotate(-90deg);
-    top: 100px;
+    top: 123px;
     position: absolute;
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
@@ -35,6 +35,7 @@
     background: #ffffff; /* Green background */
     cursor: pointer; /* Cursor on hover */
     box-shadow: -3px 0 5px #0000005d;
+    /*background-image: linear-gradient(90deg, hsl(199, 100%, 82%), hsl(29, 100%, 81%));*/
   }
 
   #hue-slider {

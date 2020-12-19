@@ -2,6 +2,7 @@
 const lottie = require('lottie-web')
 const { remote, app, BrowserWindow, ipcMain, ipcRenderer } = require('electron');
 const path = require('path');
+const { createDevice } = require('node-lifx-lan');
 
   
 
@@ -145,6 +146,8 @@ function buildDiscoverPage() {
                 continueBtn.addEventListener('click', () => {
                     //fade to background color of dashboard and switch to dashboard
                     document.getElementById('fade').classList.add('elementToFadeOut');
+                    sessionStorage.setItem('lights', device_list);
+
                     setTimeout( () => {
                         var w = remote.getCurrentWindow();
                         w.loadFile(path.join(__dirname, 'dashboard.html'));
