@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="slider.css">
     <link rel="stylesheet" href="swatches.css">
+    <link rel="stylesheet" href="zones.css">
+    <script defer src="zones.js" type="module"></script>
     <script defer src="dashboard.js" type="module"></script>
     <script defer src="swatches.js"></script>
     <script defer src="slider.js"></script>
@@ -48,10 +50,19 @@
                     </div>
                 </div>
             </li>
-            <li><div id="zones-dashboard">
-                
-            </div></li>
-            <li>Coming soon!</li>
+
+            <li class="uk-animation-fade">
+                <div id="zones-dashboard">
+                    <div id="screen-holder">
+                        <div id="screen"></div>
+                    </div>
+                    <div id="zone-control"></div>
+                </div>
+            </li>
+            
+            <li>
+                Coming soon!
+            </li>
         </ul>
     </div>
 </body>
