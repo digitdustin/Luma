@@ -47,11 +47,15 @@
   "dependencies": {
     "@lottiefiles/lottie-player": "^0.5.1",
     "bulma": "^0.9.1",
+    "electron-screencapture": "^1.1.0",
     "electron-squirrel-startup": "^1.0.0",
     "lifx-api": "^1.0.1",
     "lottie-web": "^5.7.5",
     "node-lifx": "^0.8.0",
     "node-lifx-lan": "^0.5.0",
+    "rtcmulticonnection": "^3.7.0",
+    "rtcmulticonnection-v3": "^3.4.5",
+    "screenshot-desktop": "^1.12.3",
     "uikit": "^3.6.1"
   },
   "devDependencies": {
