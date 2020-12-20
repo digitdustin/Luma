@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Luma",
+			"path": ".."
+		},
+		{
+			"name": "@lottiefiles",
+			"path": "../node_modules/@lottiefiles"
+		}
+	],
+	"settings": {}
+}

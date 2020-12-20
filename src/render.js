@@ -1,6 +1,6 @@
 //LOGIC FOR OPENING RENDER
 
-const { remote, app, BrowserWindow, ipcMain, ipcRenderer } = require('electron');
+const { remote, ipcRenderer } = require('electron');
 const path = require('path');
 const { noDeprecation } = require('process');
 
