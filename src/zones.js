@@ -1,7 +1,7 @@
-const { remote, ipcRenderer } = require('electron');
+const { remote, ipcRenderer, shell } = require('electron');
 const { relative } = require('path');
 const path = require('path');
-const { start } = require('repl');
+const {PythonShell} = require('python-shell');
 
 
 //get aspect ratio of screen for display
@@ -66,6 +66,17 @@ zoneControl.appendChild(deleteZoneButton);
 
 var dimensions = [];
 var lights = [];
+var Zones = [];
+
+class Zone {
+    constructor() {
+        this.label = "";
+        this.data = 0;
+        this.active = false;
+        this.pyshell = "";
+        this.id = "";
+    }
+}
 
 //launch resize from newzonebutton click
 newZoneButton.addEventListener('click', () => {
@@ -88,6 +99,11 @@ newZoneButton.addEventListener('click', () => {
             //remove spaces from light name for id
             zoneArea.id = lightSelect[lightSelect.selectedIndex].innerText.replace(/\s/g, '');
             zoneArea.classList.add('screen-zone');
+            var newZone = new Zone();
+            newZone.label = lightSelect[lightSelect.selectedIndex].innerText;
+            newZone.id = lightSelect[lightSelect.selectedIndex].innerText.replace(/\s/g, '')
+            
+            Zones.push(newZone);
             screenDisplay.appendChild(zoneArea);
         }
     }
@@ -97,7 +113,9 @@ newZoneButton.addEventListener('click', () => {
 ipcRenderer.on("add-selection-area", (e, data, web_component_id) => {
     console.log(data);
     dimensions.push(data);
+    Zones[dimensions.indexOf(data)].data = data;
 
+    //show new zone n screen render
     console.log('dimensions pushed');
     var zone = document.getElementById(lights[dimensions.indexOf(data)].replace(/\s/g, ''));
     console.log(Math.round(((data.top/screen.width) * parseInt((screenDisplay.style.height).slice(0, -2)))));
@@ -118,7 +136,13 @@ ipcRenderer.on("add-selection-area", (e, data, web_component_id) => {
         zone.style.border = '2px solid white';
 
         //switch zone control to control selected zone
-        zoneControlChange(lights[dimensions.indexOf(data)], data);
+        for(var i = 0; i < Zones.length; i++) {
+            if (Zones[i].id == event.target.id) {
+                console.log(Zones[i])
+                zoneControlChange(Zones[i]);
+            }
+        }
+        
     })
 });
 
@@ -168,7 +192,9 @@ const createResizeWindow = () => {
     resizeWindow.setAlwaysOnTop(true, 'screen-saver');
 }
 
-function zoneControlChange(label, data) {
+
+
+function zoneControlChange(Zone) {
     newZoneButton.hidden = true;
     lightSelect.hidden = true;
 
@@ -176,29 +202,55 @@ function zoneControlChange(label, data) {
     stopZoneButton.hidden = false;
     deleteZoneButton.hidden = false;
 
+console.log(Zone.active)
+
+    //running?
+    if (Zone.active == true) {
+        startZoneButton.disabled = true;
+        stopZoneButton.disabled = false;
+    } else {
+        stopZoneButton.disabled = true;
+        startZoneButton.disabled = false;
+    }
+
     //add event listeners for start, stop, zone
     startZoneButton.addEventListener('click', () => {
-        const BrowserWindow = remote.BrowserWindow;
-        const captureWindow = new BrowserWindow({
-            
-            resizable: true,
-            webPreferences: {
-                enableRemoteModule: true,
-                nodeIntegration: true
-            }
-        });
-    
-        //resizeWindow.webContents.openDevTools();
+        //if zone is running or is not selected, exit
+        if (document.getElementById(Zone.id).style.borderWidth == "0px") {
+            return;
+        }
+        if (Zone.active) {
+            return;
+        }
+
+        //start color track
+        Zone.pyshell = new PythonShell(path.join(__dirname, 'capture.py'), { mode: 'text', args: [Zone.label, Zone.data.width, Zone.data.height, Zone.data.top, Zone.data.left]});
         
-        //loads resize.html and js
-        captureWindow.loadFile(path.join(__dirname, 'capture.html'));
-        //makes window full screen
-        //resizeWindow.maximize();
-    
-        //ignores all click events on window
-        //resizeWindow.setIgnoreMouseEvents(true);
-        //keeps window on top at all times
-        //resizeWindow.setAlwaysOnTop(true, 'screen-saver');
+        Zone.pyshell.on('message', function (message) {
+            console.log(message);
+        });
+
+
+        Zone.active = true;
+
+        startZoneButton.disabled = true;
+        stopZoneButton.disabled = false;
+
+    })
+
+    stopZoneButton.addEventListener('click', () => {
+        //if zone is not running or is not selected, exit
+        if (document.getElementById(Zone.id).style.borderWidth == "0px") {
+            return;
+        }
+        if (!Zone.active) {
+            return;
+        }
+        Zone.pyshell.kill();
+        startZoneButton.disabled = false;
+        stopZoneButton.disabled = true;
+        Zone.active = false;
+        Zone.pyshell = "";
     })
     
  
