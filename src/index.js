@@ -1,5 +1,7 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, powerSaveBlocker } = require('electron');
 const path = require('path');
+
+powerSaveBlocker.start('prevent-app-suspension');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -16,7 +18,8 @@ const createWindow = () => {
     hasShadow: false,
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule: true
+      enableRemoteModule: true,
+      backgroundThrottling: false
     }
   });
 
@@ -33,6 +36,9 @@ const createWindow = () => {
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
 };
+
+//to prevent lights from stalling
+app.commandLine.appendSwitch("disable-renderer-backgrounding");
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

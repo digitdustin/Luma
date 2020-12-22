@@ -1,7 +1,14 @@
-const { remote, ipcRenderer, shell } = require('electron');
+const { remote, ipcRenderer, shell, session } = require('electron');
 const { relative } = require('path');
 const path = require('path');
 const {PythonShell} = require('python-shell');
+var hexToHsl = require('hex-to-hsl');
+var LifxClient = require('node-lifx').Client;
+var client = new LifxClient();
+
+//initialize light discovery client
+client.init();
+console.log('dashboard client created');
 
 
 //get aspect ratio of screen for display
@@ -31,6 +38,20 @@ var lightSelect = document.createElement('select');
 lightSelect.classList.add('uk-select');
 lightSelect.id = 'light-select';
 zoneControl.appendChild(lightSelect);
+
+
+var option = document.createElement('option');
+option.innerText = 'Select';
+lightSelect.add(option);
+
+lightSelect.addEventListener('change', (e) => {
+    if (e.target.value.innerText != 'Select') {
+        option.disabled = true;
+    }
+});
+
+var lightContainer = document.getElementById('light-list')
+
 
 //new zone button
 var newZoneButton = document.createElement('button');
@@ -222,12 +243,17 @@ console.log(Zone.active)
         if (Zone.active) {
             return;
         }
-
+        client.light(Zone.label).on();
         //start color track
-        Zone.pyshell = new PythonShell(path.join(__dirname, 'capture.py'), { mode: 'text', args: [Zone.label, Zone.data.width, Zone.data.height, Zone.data.top, Zone.data.left]});
+        Zone.pyshell = new PythonShell(path.join(__dirname, 'capture.py'), { mode: 'text', args: [Zone.label, Zone.data.left, Zone.data.right, Zone.data.top, Zone.data.bottom]});
         
         Zone.pyshell.on('message', function (message) {
-            console.log(message);
+            //console.log(message);
+            //message format: hex color
+            var hslColor = hexToHsl(`#${message}`);
+            document.getElementById(Zone.id).style.backgroundColor = `hsl(${hslColor[0]}, ${hslColor[1]}%, ${hslColor[2]}%)`
+            //change light color
+            client.light(Zone.label).color(hslColor[0], hslColor[1], hslColor[2], 3500, 200)
         });
 
 
@@ -252,9 +278,123 @@ console.log(Zone.active)
         Zone.active = false;
         Zone.pyshell = "";
     })
-    
- 
+}
 
+client.on('light-new', (light) => {
     
+    light.getLabel(function(error, data) {
+        if (error) {
+            throw error;
+        }
+        console.log(data);
+        
+        //add light to zones dropdown
+        
+        var lightOption = document.createElement('option');
+        lightOption.innerText = data;
+        lightSelect.add(lightOption);
+
+        //add light to light list
+        const lightName = document.createElement("div");
+        lightName.classList.add('light-name');
+        lightName.innerText = data.toUpperCase();
+        lightName.addEventListener('click', () => {
+            //on list light click, change color of div and change all sliders/swatches
+            var lightsInList = document.getElementsByClassName('light-name');
+            for (let i = 0; i < lightsInList.length; i++) {
+                lightsInList[i].style.backgroundColor = 'transparent';
+                lightsInList[i].style.color = 'rgb(209, 209, 209)';
+            }
+            lightName.style.backgroundColor = '#283136';
+            lightName.style.color = 'white';
+            changeControls(light);
+        });
+        lightContainer.appendChild(lightName);
+    });
+})
+
+//SLIDER CONTROLS
+
+
+const hueSlider = document.getElementById('hue-slider');
+const saturationSlider = document.getElementById('saturation-slider');
+const brightnessSlider = document.getElementById('brightness-slider');
+const kelvinSlider = document.getElementById('kelvin-slider');
+
+var activeLight = 0;
+var wait = true;
+
+function changeWait() {
+    setTimeout(() => {
+        wait = true
+    }, 50);
+}
+
+//change lights when sliders change
+hueSlider.addEventListener('input', (e) => {
+    if (wait == true) {
+        if (activeLight != 0) {
+            activeLight.color(Number(hueSlider.value), Number(saturationSlider.value), Number(brightnessSlider.value)); // Set to red at 50% brightness
+        }
+        wait = false;
+        changeWait();
+    }
+})
+
+saturationSlider.addEventListener('input', (e) => {
+    if (wait == true) {
+        if (activeLight != 0) {
+            activeLight.color(Number(hueSlider.value), Number(saturationSlider.value), Number(brightnessSlider.value)); // Set to red at 50% brightness
+        }
+        wait = false;
+        changeWait();
+    }
+})
+
+brightnessSlider.addEventListener('input', (e) => {
+    if (wait == true) {
+        if (activeLight != 0) {
+            activeLight.color(Number(hueSlider.value), Number(saturationSlider.value), Number(brightnessSlider.value)); // Set to red at 50% brightness
+        }
+        wait = false;
+        changeWait();
+    }
+})
+
+//changes all sliders and current swatch to the selected light color
+function changeControls(light) {
+    light.getState(function(error, data) {
+        if (error) {
+            throw error;
+        }
+        console.log(data);
+        if (data['color']['saturation'] == 0) {
+            //change slider if white
+            document.getElementById('kelvin-slider').value = data['color']['kelvin'];
+            document.getElementById('hue-slider').value = 180;
+            document.getElementById('saturation-slider').value = 50;
+            document.getElementById('brightness-slider').value = 100;
+            //change swatch shade
+            if (document.getElementById('kelvin-slider').value >= 5250) {
+                document.getElementById('current-swatch').style.backgroundColor = `hsl(${(Math.round(((kelvinSlider.value - 1500) / 7500) * 170)) + 30}, 100%, ${85 + (20 - Math.round(((kelvinSlider.value - 5250) / 3750) * 20))}%)`;
+            } else {
+                document.getElementById('current-swatch').style.backgroundColor = `hsl(${(Math.round(((kelvinSlider.value - 1500) / 7500) * 170)) + 30}, 100%, ${85 + (Math.round(((kelvinSlider.value - 1500) / 3750) * 20))}%)`;
+            }
+        } else {
+            //change sliders if color
+            document.getElementById('kelvin-slider').value = 5250;
+            document.getElementById('hue-slider').value = data['color']['hue'];
+            document.getElementById('saturation-slider').value = data['color']['saturation'];
+            document.getElementById('brightness-slider').value = data['color']['brightness'];
+            //change swatch color
+            document.getElementById('current-swatch').style.backgroundColor = `hsl(${hueSlider.value}, ${saturationSlider.value}%, ${brightnessSlider.value}%)`;
+        }
+        document.getElementById('current-swatch').value = data['color']['brightness'];
+        
+    })
+
+
+    activeLight = light;
+    console.log(activeLight);
 
 }

@@ -25,7 +25,7 @@ hueSlider.oninput = () => {
 }
 
 saturationSlider.oninput = () => {
-    hueSlider.style.background = `-webkit-linear-gradient(0deg, hsl(0, ${saturationSlider.value}%, ${brightnessSlider.value}%) 0%, hsl(60, ${saturationSlider.value}%, ${brightnessSlider.value}%) 17%, hsl(120, ${saturationSlider.value}%, ${brightnessSlider.value}%) 33%, hsl(180, ${saturationSlider.value}%, ${brightnessSlider.value}%) ${brightnessSlider.value}%, hsl(240, ${saturationSlider.value}%, ${brightnessSlider.value}%) 67%, hsl(300, ${saturationSlider.value}%, ${brightnessSlider.value}%) 83%, hsl(0, ${saturationSlider.value}%, ${brightnessSlider.value}%) 100%)`;
+    hueSlider.style.background = `-webkit-linear-gradient(0deg, hsl(0, ${saturationSlider.value}%, ${brightnessSlider.value}%) 0%, hsl(60, ${saturationSlider.value}%, ${brightnessSlider.value}%) 17%, hsl(120, ${saturationSlider.value}%, ${brightnessSlider.value}%) 33%, hsl(180, ${saturationSlider.value}%, ${brightnessSlider.value}%) 50%, hsl(240, ${saturationSlider.value}%, ${brightnessSlider.value}%) 67%, hsl(300, ${saturationSlider.value}%, ${brightnessSlider.value}%) 83%, hsl(0, ${saturationSlider.value}%, ${brightnessSlider.value}%) 100%)`;
     brightnessSlider.style.backgroundImage = `linear-gradient(90deg, hsl(${hueSlider.value}, ${saturationSlider.value}%, 0%), hsl(${hueSlider.value}, ${saturationSlider.value}%, 50%), hsl(${hueSlider.value}, ${saturationSlider.value}%, 100%)`;
     console.log(saturationSlider.value)
 
