@@ -49,6 +49,7 @@
     "bulma": "^0.9.1",
     "electron-screencapture": "^1.1.0",
     "electron-squirrel-startup": "^1.0.0",
+    "hex-to-hsl": "^1.0.2",
     "lifx-api": "^1.0.1",
     "lottie-web": "^5.7.5",
     "node-lifx": "^0.8.0",
