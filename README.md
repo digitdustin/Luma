@@ -1,2 +1,2 @@
 # Luma
-Control your LIFX bulbs to sync to your screen.
+Dynamic, responsive lighting for LIFX smartbulbs.
